@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1um0xkax78we"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dm0k"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = 42.0
+offset_right = 741.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7dm0k")
