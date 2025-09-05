@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 
+# Mouvement left right
 func _process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		flip_h = false  # face right
@@ -11,3 +12,7 @@ func _process(_delta):
 			play("run")
 	else:
 		stop()
+
+# Function Jump (work in progress)
+#if Input.is_action_just_pressed("jump"):
+	
