@@ -1,19 +1,114 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1um0xkax78we"]
+[gd_scene load_steps=12 format=3 uid="uid://b1um0xkax78we"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7dm0k"]
+[ext_resource type="Texture2D" uid="uid://gfpk6np8g7qc" path="res://media/images/2d_animation_player-run.webp" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://c8oem2tydew0u" path="res://animated_sprite_2d.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bve0ygykxvu7g" path="res://button_toggle.gd" id="3_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://gd6icjnn3l3t" path="res://media/sons/THX INTRO HD QUALITY.mp3" id="4_lquwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(33, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(66, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(99, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(132, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("1_h2yge")
+region = Rect2(165, 0, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kek77"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Button" type="Button" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 305)
+scale = Vector2(7.23437, 7.23438)
+sprite_frames = SubResource("SpriteFrames_kek77")
+animation = &"run"
+frame = 5
+frame_progress = 0.867632
+script = ExtResource("2_h2yge")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 53.0
+offset_bottom = 42.0
+
+[node name="Button_trigger" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 519.0
-offset_top = 42.0
-offset_right = 741.0
-offset_bottom = 264.0
+offset_left = 448.0
+offset_top = -2.0
+offset_right = 631.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Trigger"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_7dm0k")
+[node name="button_toggle" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 452.0
+offset_top = 417.0
+offset_right = 635.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+text = "Toggle"
+script = ExtResource("3_1bvp3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/button_toggle"]
+stream = ExtResource("4_lquwl")
+volume_db = 0.187
+
+[connection signal="toggled" from="Control/button_toggle" to="Control/button_toggle" method="_on_toggled"]
