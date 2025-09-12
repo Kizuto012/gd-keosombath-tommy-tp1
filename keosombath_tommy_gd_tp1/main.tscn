@@ -81,7 +81,7 @@ offset_top = 2.0
 offset_right = 53.0
 offset_bottom = 42.0
 
-[node name="Button_hold" type="Button" parent="Control"]
+[node name="Button_toggle2" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,10 +92,10 @@ offset_right = 631.0
 offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hold Press"
+text = "Toggle"
 script = ExtResource("3_7mycd")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/Button_hold"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/Button_toggle2"]
 stream = ExtResource("4_272bh")
 
 [node name="button_toggle" type="Button" parent="Control"]
@@ -117,5 +117,5 @@ script = ExtResource("3_1bvp3")
 stream = ExtResource("4_lquwl")
 volume_db = 0.187
 
-[connection signal="pressed" from="Control/Button_hold" to="Control/Button_hold" method="_on_pressed"]
+[connection signal="pressed" from="Control/Button_toggle2" to="Control/Button_toggle2" method="_on_pressed"]
 [connection signal="toggled" from="Control/button_toggle" to="Control/button_toggle" method="_on_toggled"]

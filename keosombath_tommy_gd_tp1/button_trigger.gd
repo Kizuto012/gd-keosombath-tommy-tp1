@@ -1,8 +1,7 @@
 extends Button
 
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+func _on_toggled(toggled_on: bool) -> void:
+	if toggled_on:
 		$AudioStreamPlayer2D.play()
-	if Input.is_action_just_released("ui_cancel"):
-		$AudioStreamPlayer2D.stop()
+	else:
+		$AudioStreamPlayer2D.stop()	
