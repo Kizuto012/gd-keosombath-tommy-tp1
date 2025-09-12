@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1um0xkax78we"]
+[gd_scene load_steps=14 format=3 uid="uid://b1um0xkax78we"]
 
 [ext_resource type="Texture2D" uid="uid://gfpk6np8g7qc" path="res://media/images/2d_animation_player-run.webp" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://c8oem2tydew0u" path="res://animated_sprite_2d.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://bve0ygykxvu7g" path="res://button_toggle.gd" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://d0lo56ty1c1t1" path="res://button_trigger.gd" id="3_7mycd"]
+[ext_resource type="AudioStream" uid="uid://b0l4u0f6omjdu" path="res://media/sons/real-rain-sound-379215.mp3" id="4_272bh"]
 [ext_resource type="AudioStream" uid="uid://gd6icjnn3l3t" path="res://media/sons/THX INTRO HD QUALITY.mp3" id="4_lquwl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
@@ -79,7 +81,7 @@ offset_top = 2.0
 offset_right = 53.0
 offset_bottom = 42.0
 
-[node name="Button_trigger" type="Button" parent="Control"]
+[node name="Button_hold" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +92,11 @@ offset_right = 631.0
 offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Trigger"
+text = "Hold Press"
+script = ExtResource("3_7mycd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/Button_hold"]
+stream = ExtResource("4_272bh")
 
 [node name="button_toggle" type="Button" parent="Control"]
 layout_mode = 1
@@ -111,4 +117,5 @@ script = ExtResource("3_1bvp3")
 stream = ExtResource("4_lquwl")
 volume_db = 0.187
 
+[connection signal="pressed" from="Control/Button_hold" to="Control/Button_hold" method="_on_pressed"]
 [connection signal="toggled" from="Control/button_toggle" to="Control/button_toggle" method="_on_toggled"]
